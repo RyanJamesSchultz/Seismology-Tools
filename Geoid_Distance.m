@@ -134,6 +134,8 @@ function [dist, azi_start, azi_end, status] = Vincenty(lat1, lon1, lat2, lon2)
   alpha1 = atan2( CosU2.*SinL,  CosU1.*SinU2-SinU1.*CosU2.*CosL );
   alpha2 = atan2( CosU1.*SinL, -SinU1.*CosU2+CosU1.*SinU2.*CosL );
   
+  s(isnan(s))=0;
+  
   dist=s*180.0/(pi()*Radius);
   azi_start=rem( (alpha1*180.0/pi())+360.0, 360.0);
   azi_end=rem( (alpha2*180.0/pi())+360.0, 360.0);
